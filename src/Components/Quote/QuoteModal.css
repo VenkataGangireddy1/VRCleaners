@@ -1,0 +1,233 @@
+.quote-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(33, 78, 115, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+.quote-modal {
+  background: #fff;
+  color: #222;
+  width: 100%;
+  max-width: 720px;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(33, 78, 115, 0.3);
+  position: relative;
+  border: 2px solid #F2CA27;
+}
+
+.quote-modal h2 {
+  color: #214E73;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #F2CA27;
+}
+
+.quote-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
+  background: #F2CA27;
+  color: #214E73;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(33, 78, 115, 0.2);
+}
+
+.quote-close:hover {
+  background: #214E73;
+  color: #F2CA27;
+  transform: scale(1.1);
+}
+.quote-form .row { display: flex; gap: 0.75rem; margin-bottom: 1rem }
+.quote-form .row input, .quote-form .row textarea { 
+  flex: 1; 
+  padding: 0.875rem; 
+  border-radius: 8px; 
+  border: 2px solid #ddd;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.quote-form .row input:focus, .quote-form .row textarea:focus { 
+  outline: none;
+  border-color: #F2CA27;
+  box-shadow: 0 0 0 3px rgba(242, 202, 39, 0.2);
+  background: #fefdf8;
+}
+
+.quote-form .row textarea { resize: vertical; min-height: 120px; }
+.quote-form .actions { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.5rem; }
+
+.quote-form .btn {
+  background: #F2CA27;
+  color: #214E73;
+  border: 3px solid #214E73;
+  padding: 12px 32px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.quote-form .btn:hover {
+  background: #214E73;
+  color: #F2CA27;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(33, 78, 115, 0.3);
+}
+
+.quote-form .btn[type="button"] {
+  background: transparent;
+  color: #214E73;
+  border: 2px solid #214E73;
+}
+
+.quote-form .btn[type="button"]:hover {
+  background: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.quote-status { 
+  margin-top: 1rem; 
+  color: #444;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Input group for individual field containers */
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Error styling for inputs */
+.quote-form input.error,
+.quote-form textarea.error {
+  border-color: #dc3545;
+  background-color: #fef2f2;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+/* Error message styling */
+.field-error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.375rem;
+  padding-left: 0.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.field-error::before {
+  content: "⚠";
+  font-size: 1rem;
+}
+
+/* Status message styling */
+.quote-status .error {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.quote-status .success {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.quote-status p {
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+/* success animation */
+.quote-success {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+}
+.checkmark {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F2CA27 0%, #214E73 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(33, 78, 115, 0.4);
+  transform: scale(0.85);
+  animation: pop 420ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+.checkmark svg { width: 56px; height: 56px; fill: none; stroke: white; stroke-width: 3 }
+@keyframes pop { to { transform: scale(1) } }
+
+@media (max-width: 768px) {
+  .quote-modal {
+    margin: 1rem;
+    padding: 1.5rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  .quote-modal h2 {
+    font-size: 1.5rem;
+  }
+  
+  .quote-form .row { 
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .quote-form .actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .quote-form .btn {
+    width: 100%;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-modal {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .quote-close {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+}

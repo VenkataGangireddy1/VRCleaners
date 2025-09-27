@@ -1,0 +1,92 @@
+/* Container for reviews section */
+.reviews-row {
+  padding: 2.25rem 0;
+}
+
+/* Inner wrapper with buttons and track */
+.reviews-row-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Scrollable track for cards */
+.reviews-track {
+  overflow-x: auto;
+  display: flex;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+}
+
+.reviews-track::-webkit-scrollbar {
+  display: none; /* hide scrollbar */
+}
+
+/* Individual review card */
+.review-card {
+  flex: 0 0 calc(100% / 1 - 1rem);
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  min-height: 120px;
+}
+
+/* Star rating */
+.stars {
+  color: #f5b400;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Review text */
+.text {
+  margin: 0 0 0.75rem;
+  color: #222;
+}
+
+/* Author name */
+.author {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Navigation buttons */
+.nav {
+  background: none;
+  border: 0;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Responsive card layout */
+@media (min-width: 600px) {
+  .review-card {
+    flex: 0 0 calc(100% / 2 - 1rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .review-card {
+    flex: 0 0 calc(100% / 3 - 1rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .review-card {
+    flex: 0 0 calc(100% / 4 - 1rem);
+  }
+}
+
+/* Smaller nav buttons on mobile */
+@media (max-width: 520px) {
+  .nav {
+    font-size: 18px;
+  }
+}
+
+
+

@@ -1,0 +1,210 @@
+/* Reset everything */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Theme variables for easy color changes */
+:root{
+  --nav-bg: #727782;        /* navbar background */
+  --nav-height: 100px;
+  --nav-padding: 0 40px;
+  --text-color: #ffffff;    /* default link / nav text color */
+  --link-hover: #f2f2f2;
+  --button-bg: #ffffff;     /* button background */
+  --button-text: #6c5a5a;   /* button text color */
+  --button-hover-bg: #d30c0c; /* button hover */
+  --dropdown-bg: #ffffff;   /* dropdown background */
+  --dropdown-text: #333333; /* dropdown text color */
+  --accent: #0077cc;        /* accent color for icons / highlights */
+}
+
+/* Navbar */
+.navbar {
+  width: 100vw;            /* full viewport width */
+  background-color: transparent; /* start transparent at top */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--nav-padding);
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: background-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease, padding 220ms ease;
+}
+
+/* When page is scrolled - give the navbar a solid background and subtle shadow */
+.navbar.scrolled {
+  background-color: var(--nav-bg);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  backdrop-filter: blur(6px);
+  padding: 6px 36px; /* slightly smaller padding when scrolled */
+}
+
+/* Per-state color variables (override inside .navbar and .navbar.scrolled) */
+.navbar{
+  /* default (transparent) state vars: use darker text and transparent buttons */
+  --nav-link-color: rgba(0,0,0,0.88);
+  --nav-link-hover: var(--accent);
+  --btn-bg-state: transparent;
+  --btn-text-state: #222222;
+  --btn-hover-state: rgba(0,0,0,0.06);
+}
+.navbar.scrolled{
+  /* when scrolled: transparent buttons with white text for contrast against the colored bg */
+  --nav-link-color: #ffffff;
+  --nav-link-hover: rgba(255,255,255,0.8);
+  --btn-bg-state: transparent;
+  --btn-text-state: #ffffff;
+  --btn-hover-state: rgba(255,255,255,0.1);
+}
+
+/* Remove border from navbar buttons for cleaner look */
+.navbar .btn {
+  border: none;
+}
+.navbar.scrolled .btn { border: none; }
+
+/* Logo */
+.logo {
+  height: 70px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  border-radius: 8px;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+.navbar.scrolled .logo {
+  height: 50px;
+  padding: 4px 8px;
+}
+
+.logo-link { 
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none; 
+  line-height: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* Navbar Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+/* Links */
+.navbar-links a {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  padding: 8px 6px;
+  font-weight: 500;
+}
+.navbar-links a:hover{
+  color: var(--nav-link-hover);
+}
+
+/* Specifically style anchor elements that use the .btn class so they match <button> appearance */
+.navbar-links a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btn-bg-state);
+  color: var(--btn-text-state);
+  padding: 8px 14px;
+  height: 40px;
+  min-width: 44px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.navbar-links a.btn:hover{
+  background: var(--btn-hover-state);
+  color: var(--btn-text-state);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.navbar .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--btn-bg-state) !important;
+  color: var(--btn-text-state) !important;
+  border: none;
+  padding: 8px 14px;
+  height: 40px; /* fixed height to match across buttons/links */
+  min-width: 44px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background .15s ease, transform .08s ease, color .15s ease;
+  text-decoration: none; /* for links styled as buttons */
+}
+
+.navbar .btn:hover {
+  background: var(--btn-hover-state) !important;
+  color: var(--btn-text-state) !important;
+  transform: translateY(-1px);
+}
+.btn:focus{ outline: 3px solid rgba(0,123,255,0.15); outline-offset: 2px; }
+
+/* Icon spacing */
+.icon { margin-right: 8px; vertical-align: middle; display: inline-block; }
+
+/* Dropdown */
+.dropdown-content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: var(--dropdown-bg);
+  min-width: 220px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--dropdown-text);
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: var(--accent);
+}
+

@@ -1,0 +1,30 @@
+.title{
+    margin-top: 56px; /* more space below hero */
+    margin-bottom: 28px;
+    text-align: center;
+    color: #212EA0;
+    padding: 18px 12px;
+}
+
+.title h2:first-of-type{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #212EA0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.title h2:last-of-type{
+    font-size: 30px;
+    margin-bottom: 6px;
+    color: #212EA0;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@media (min-width: 900px){
+    .title{ margin-top: 84px; }
+    .title h2:last-of-type{ font-size: 36px; }
+}
+

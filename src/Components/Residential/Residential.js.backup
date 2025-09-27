@@ -1,0 +1,111 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './Commercial.css';
+import Contact from '../Contact/Contact';
+import img1 from '../../assets/cleaning4.jpeg';
+import img2 from '../../assets/cleaning32.jpeg';
+import img3 from '../../assets/cleaning30.jpeg';
+import QuoteModal from '../Quote/QuoteModal';
+
+export default function Commercial() {
+  const [open, setOpen] = useState(false);
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    { q: 'What types of office cleaning services are available?', a: 'Office cleaning services encompass general cleaning, deep cleaning, and specialty options such as window and carpet cleaning. These services can be tailored to meet your specific needs and ensure a clean and professional workspace.' },
+    { q: 'How often should an office be professionally cleaned?', a: 'Frequency depends on size, occupancy and use. Many offices choose nightly, weekly or several times per week services; we help recommend a cadence based on traffic and risk areas.' },
+    { q: 'Are eco-friendly cleaning products effective?', a: 'Yes; our eco-friendly products provide thorough cleaning while being safer for indoor air quality and occupants.' },
+    { q: 'How can a cleaning schedule benefit my office?', a: 'A consistent schedule maintains cleanliness, reduces cross-contamination, and contributes to employee morale and productivity.' },
+    { q: 'What should I consider when choosing an office cleaning company?', a: 'Prioritize experience, reputation, flexibility, pricing and transparency in scope when selecting a commercial cleaning partner.' }
+  ];
+
+  const toggleIndex = (i) => setOpenIndex(openIndex === i ? null : i);
+
+  const pageRef = useRef(null);
+
+  useEffect(() => {
+    if (!pageRef.current) return;
+    const nodes = pageRef.current.querySelectorAll('.scroll-animate');
+    if (!nodes || nodes.length === 0) return;
+
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    nodes.forEach(n => obs.observe(n));
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div className="commercial-page" ref={pageRef}>
+      <header className="com-hero full-bleed">
+        <div className="com-hero-bg">
+          <img src={img1} alt="Commercial cleaning" />
+          <div className="com-hero-overlay">
+            <h1>COMMERCIAL CLEANING SERVICES</h1>
+          </div>
+        </div>
+      </header>
+
+      <section className="com-intro container-row">
+        <div className="com-copy">
+          <h2>WHY PROFESSIONAL COMMERCIAL CLEANING MATTERS</h2>
+          <p>At VR Cleaners, we set the standard for commercial cleaning with proven systems that go beyond surface-level tidiness. Our professional services focus on eliminating dirt, germs, and bacteria—creating a healthier, safer, and more productive environment for your team, clients, and guests.</p>
+          <button className="est-btn" onClick={() => setOpen(true)}>Get Instant Price</button>
+        </div>
+        <div className="featured-image-card com-feature scroll-animate scroll-animate-left">
+          <img src={img2} alt="commercial team" />
+        </div>
+      </section>
+
+      <section className="com-two container-row">
+        <div className="featured-image-card left-card scroll-animate scroll-animate-right">
+          <img src={img3} alt="equipment" />
+        </div>
+        <div className="com-details">
+          <h2>ROUTINE JANITORIAL SERVICES</h2>
+          <p>Whether you require daily, weekly, or monthly cleaning, VR Cleaners will customize a professional janitorial program tailored to your facility’s needs.</p>
+          <ul className="check-list two-col">
+            <li><strong>Office Areas:</strong> Dusting and wiping of all horizontal surfaces · Trash collection and removal · Disinfection of high-touch points</li>
+            <li><strong>Break Rooms & Cafes:</strong> Disinfection of sinks, tables, chairs, counters and entry areas · Floors swept, mopped, and shined</li>
+            <li><strong>Restrooms:</strong> Toilets and stalls cleaned and disinfected · Sinks sanitized · Floors swept and mopped</li>
+            <li><strong>Interior Windows:</strong> Special attention to entryways, lobbies, and reception areas</li>
+            <li><strong>Trash Collection & Eco-Friendly Disposal:</strong> Coordination with your recycling and sustainability practices</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="com-faq container-row">
+        <div className="faq-wrap">
+          <h2>FREQUENTLY ASKED QUESTIONS</h2>
+          <div className="faq-list">
+            {faqs.map((f, i) => (
+              <div key={i} className={`faq-item ${openIndex === i ? 'open' : ''}`}>
+                <button
+                  className="faq-question"
+                  aria-expanded={openIndex === i}
+                  aria-controls={`faq-${i}`}
+                  onClick={() => toggleIndex(i)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleIndex(i); } }}
+                >
+                  <span>{f.q}</span>
+                  <span className={`chev ${openIndex === i ? 'rot' : ''}`} aria-hidden>▾</span>
+                </button>
+                <div id={`faq-${i}`} className={`faq-answer ${openIndex === i ? 'open' : ''}`} role="region" aria-hidden={openIndex === i ? 'false' : 'true'}>
+                  <p>{f.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Contact />
+      <QuoteModal open={open} onClose={() => setOpen(false)} />
+    </div>
+  );
+}
