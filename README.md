@@ -1,15 +1,35 @@
-# Getting Started with Create React App
+# VR Cleaners Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based website for VR Cleaners, a professional cleaning service company.
 
-## Available Scripts
+## Setup Instructions
 
-In the project directory, you can run:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `npm start`
+2. **Environment Variables:**
+   - Copy `.env.example` to `.env`
+   - Add your Google Maps API key to enable the map functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+   
+   Runs the app in development mode.\
+   Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Recent Fixes Applied
+
+✅ **Missing Dependencies Fixed:**
+- Added `react-router-dom` for routing functionality
+- Added `react-icons` for social media and UI icons
+
+✅ **Build Issues Resolved:**
+- Project now builds successfully without errors
+- All components can be imported and rendered correctly
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
