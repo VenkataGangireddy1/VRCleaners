@@ -2,10 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import VR from '../../assets/VR.jpeg';
-import { FaPhoneAlt, FaConciergeBell } from 'react-icons/fa';
+import { FaPhoneAlt, FaConciergeBell, FaBars, FaTimes } from 'react-icons/fa';
 
 function Navbar() {
   const [showServices, setShowServices] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const servicesRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -56,11 +57,26 @@ function Navbar() {
     if (location.pathname !== '/') navigate('/');
   }
 
+  function closeMobileMenu() {
+    setMobileMenuOpen(false);
+    setShowServices(false);
+  }
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <a href="/" className="logo-link" onClick={handleLogoClick}><img src={VR} className="logo" alt="VR Logo" /></a>
-      <ul className="navbar-links">
-  <li><a href="/" onClick={handleHomeClick}>Home</a></li>
+      
+      {/* Mobile Hamburger Menu Button */}
+      <button 
+        className="mobile-menu-btn"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        aria-label="Toggle mobile menu"
+      >
+        {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      <ul className={`navbar-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+        <li><a href="/" onClick={(e) => { handleHomeClick(e); closeMobileMenu(); }}>Home</a></li>
         <li className="dropdown" ref={servicesRef}>
           <button
             className="btn dropbtn"
@@ -78,17 +94,17 @@ function Navbar() {
           </button>
           {showServices && (
             <div className="dropdown-content" role="menu">
-              <Link to="/residential" onClick={() => setShowServices(false)}>Residential Cleaning Service</Link>
-              <Link to="/commercial" onClick={() => setShowServices(false)}>Commercial Cleaning Service</Link>
-              <Link to="/deep-cleaning" onClick={() => setShowServices(false)}>Deep Cleaning Service</Link>
-              <Link to="/what-we-do" onClick={() => setShowServices(false)}>What We Do</Link>
+              <Link to="/residential" onClick={() => { setShowServices(false); closeMobileMenu(); }}>Residential Cleaning Service</Link>
+              <Link to="/commercial" onClick={() => { setShowServices(false); closeMobileMenu(); }}>Commercial Cleaning Service</Link>
+              <Link to="/deep-cleaning" onClick={() => { setShowServices(false); closeMobileMenu(); }}>Deep Cleaning Service</Link>
+              <Link to="/what-we-do" onClick={() => { setShowServices(false); closeMobileMenu(); }}>What We Do</Link>
             </div>
           )}
         </li>
-        <li><Link to="/faqs">FAQ's</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/faqs" onClick={closeMobileMenu}>FAQ's</Link></li>
+        <li><Link to="/about" onClick={closeMobileMenu}>About</Link></li>
         <li>
-          <Link to="/contact" className="btn"><FaPhoneAlt className="icon"/> Contact Us</Link>
+          <Link to="/contact" className="btn" onClick={closeMobileMenu}><FaPhoneAlt className="icon"/> Contact Us</Link>
         </li>
       </ul>
     </nav>
