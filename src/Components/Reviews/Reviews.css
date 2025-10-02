@@ -62,6 +62,74 @@
   padding: 0.25rem 0.5rem;
 }
 
+/* Mobile First Responsive Design */
+@media (max-width: 480px) {
+  .reviews-row {
+    padding: 1.5rem 0;
+  }
+  
+  .reviews-row-inner {
+    gap: 0.25rem;
+    padding: 0 8px;
+  }
+  
+  .reviews-track {
+    gap: 0.75rem;
+    padding: 0 4px;
+  }
+  
+  .review-card {
+    flex: 0 0 calc(100% - 0.75rem);
+    padding: 0.75rem;
+    min-height: 100px;
+  }
+  
+  .stars {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+  }
+  
+  .author {
+    font-size: 12px;
+  }
+  
+  .nav {
+    font-size: 16px;
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+@media (max-width: 520px) and (min-width: 481px) {
+  .reviews-row-inner {
+    gap: 0.4rem;
+    padding: 0 12px;
+  }
+  
+  .review-card {
+    padding: 0.9rem;
+    min-height: 110px;
+  }
+  
+  .text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .author {
+    font-size: 13px;
+  }
+  
+  .nav {
+    font-size: 18px;
+  }
+}
+
 /* Responsive card layout */
 @media (min-width: 600px) {
   .review-card {
@@ -81,10 +149,18 @@
   }
 }
 
-/* Smaller nav buttons on mobile */
-@media (max-width: 520px) {
-  .nav {
-    font-size: 18px;
+/* Tablet improvements */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .reviews-row {
+    padding: 2rem 0;
+  }
+  
+  .reviews-row-inner {
+    padding: 0 16px;
+  }
+  
+  .review-card {
+    min-height: 130px;
   }
 }
 

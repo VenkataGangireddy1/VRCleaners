@@ -23,6 +23,58 @@
     font-style: normal;
 }
 
+/* Mobile First Responsive Design */
+@media (max-width: 480px) {
+    .title {
+        margin-top: 32px;
+        margin-bottom: 20px;
+        padding: 12px 8px;
+    }
+    
+    .title h2:first-of-type {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    
+    .title h2:last-of-type {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .title {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        padding: 14px 10px;
+    }
+    
+    .title h2:first-of-type {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    
+    .title h2:last-of-type {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 899px) and (min-width: 769px) {
+    .title {
+        margin-top: 48px;
+        margin-bottom: 26px;
+    }
+    
+    .title h2:first-of-type {
+        font-size: 26px;
+    }
+    
+    .title h2:last-of-type {
+        font-size: 26px;
+    }
+}
+
 @media (min-width: 900px){
     .title{ margin-top: 84px; }
     .title h2:last-of-type{ font-size: 36px; }

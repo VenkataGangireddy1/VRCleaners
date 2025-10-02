@@ -78,11 +78,27 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.hero .btn img {
-    width: 16px;
-    height: 16px;
-    filter: brightness(0) saturate(100%) invert(20%) sepia(30%) saturate(1000%) hue-rotate(180deg);
+/* Pulse animation for hero CTA (matches other service pages) */
+@keyframes pulse-cta {
+    0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+    50% { transform: scale(1.04); box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
+    100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
 }
+
+.hero .btn {
+    animation: pulse-cta 2.5s ease-in-out infinite;
+}
+
+/* Pause animation on hover/focus for usability */
+.hero .btn:hover, .hero .btn:focus {
+    animation-play-state: paused;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .hero .btn { animation: none !important; transition: none !important; }
+}
+
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {

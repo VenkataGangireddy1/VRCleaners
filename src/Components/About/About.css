@@ -7,7 +7,7 @@
 }
 
 .about-page{
-  padding: 120px 16px 48px;
+  padding: 160px 16px 48px; /* Account for top contact bar + navbar */
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   color: #222;
   min-height: 100vh;
@@ -93,6 +93,67 @@
   color: var(--muted);
   margin: 0;
   line-height: 1.6;
+}
+
+/* Mobile First Responsive Design */
+@media (max-width: 480px) {
+  .about-page {
+    padding: 100px 12px 32px;
+  }
+  
+  .about-header h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .about-header .lead {
+    font-size: 1rem;
+    margin-bottom: 32px;
+    padding: 0 8px;
+  }
+  
+  .blog-grid {
+    gap: 20px;
+  }
+  
+  .post-body {
+    padding: 16px;
+  }
+  
+  .post-title {
+    font-size: 1.1rem;
+  }
+  
+  .post-excerpt {
+    font-size: 0.9rem;
+  }
+  
+  .post-media img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 110px 16px 40px;
+  }
+  
+  .about-header h1 {
+    font-size: 2.4rem;
+  }
+  
+  .about-header .lead {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+  
+  .blog-grid {
+    gap: 24px;
+  }
+  
+  .post-media img {
+    height: 220px;
+  }
 }
 
 @media(min-width: 720px){

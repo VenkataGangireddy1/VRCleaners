@@ -68,7 +68,14 @@ a {
   white-space: nowrap;
 }
 
-/* Mobile Optimization */
+/* Global mobile optimization - Enhanced */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding-left: 0.75rem;
@@ -87,9 +94,9 @@ a {
     min-width: 44px;
   }
   
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.3rem; }
+  h1 { font-size: 1.8rem; line-height: 1.2; }
+  h2 { font-size: 1.5rem; line-height: 1.3; }
+  h3 { font-size: 1.3rem; line-height: 1.4; }
   
   /* Improve touch targets for buttons and links */
   a, button {
@@ -104,6 +111,12 @@ a {
   
   body {
     overflow-x: hidden;
+  }
+  
+  /* Ensure images don't overflow on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -125,7 +138,13 @@ a {
     min-height: 44px;
   }
   
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.3rem; }
-  h3 { font-size: 1.1rem; }
+  h1 { font-size: 1.5rem; line-height: 1.2; }
+  h2 { font-size: 1.3rem; line-height: 1.2; }
+  h3 { font-size: 1.1rem; line-height: 1.3; }
+  
+  /* Even tighter spacing on very small screens */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }

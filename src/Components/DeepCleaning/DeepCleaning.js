@@ -4,23 +4,18 @@ import img1 from '../../assets/cleaning4.jpeg';
 import img25 from '../../assets/cleaning31.jpeg';
 import img3 from '../../assets/cleaning29.jpeg';
 import Contact from '../Contact/Contact';
-import QuoteModal from '../Quote/QuoteModal';
+import { useNavigate } from 'react-router-dom';
 
 const DeepCleaning = () => {
-  const [open, setOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   const faqs = [
-    { q: 'What is included in a deep cleaning?', a: 'A deep cleaning includes thorough scrubbing and detailed cleaning of kitchens, bathrooms, baseboards, vents, inside appliances, and other areas that regular cleans often miss.' },
-    { q: 'How long does a deep clean take?', a: 'Time depends on the size and condition of the home; most deep cleans take between 3 and 6 hours for an average 2-3 bedroom home.' },
-    { q: 'Do I need to provide supplies?', a: 'No - our teams bring professional equipment and cleaning solutions. If you prefer specific products, let us know ahead of time.' },
-    { q: 'Do you offer move-in/move-out deep cleans?', a: 'Yes - we provide move-in and move-out cleaning with extra attention to cabinets, ovens, and baseboards.' },
-    { q: 'Can I schedule recurring deep cleans?', a: 'Deep cleans are usually scheduled as one-time or occasional services; we offer recurring maintenance packages separately.' },
-    { q: 'Are your cleaners insured and background-checked?', a: 'Yes - all team members undergo background checks and are covered by our liability policies.' },
-    { q: 'What if I have pets?', a: 'Please secure or inform us about pets so we can ensure a safe and efficient clean.' },
-    { q: 'Can you clean after construction?', a: 'Yes - post-construction cleans are available and often include debris removal and intensive dusting.' },
-    { q: 'How do I get a quote?', a: 'Use the "Get Instant Price" button to open the quote form, or contact us and we will provide a tailored estimate.' },
-    { q: 'What payment methods do you accept?', a: 'We accept credit cards, online payments, and company invoicing for business customers.' }
+    { q: 'What does a deep clean cover?', a: 'Our deep cleaning targets built-up grime and hard-to-reach areas — baseboards, grout, interior appliances, vents, and detailed surface cleaning throughout your home.' },
+    { q: 'How long will a deep clean take?', a: 'Typical times vary by home size and condition; most 2–3 bedroom homes complete in 3–6 hours. We provide time estimates during quoting.' },
+    { q: 'Do I need to supply anything?', a: 'No — our teams arrive fully equipped. If you have product preferences (eco-friendly or allergy-safe), let us know and we will use those.' },
+    { q: 'Can you do move-in or post-construction cleans?', a: 'Yes. We offer move-in/move-out and post-construction cleaning with debris removal, intensive dusting, and detailed surface work.' },
+    { q: 'Are cleaners vetted and insured?', a: 'Yes — all team members are background-checked and insured for your peace of mind.' }
   ];
 
   const toggleIndex = (i) => setOpenIndex(openIndex === i ? null : i);
@@ -51,16 +46,16 @@ const DeepCleaning = () => {
         <div className="deep-hero-bg">
           <img src={img1} alt="Deep cleaning" />
           <div className="deep-hero-overlay">
-            <h1>PROFESSIONAL DEEP CLEANING SERVICES</h1>
+            <h1>Professional Deep Cleaning Services</h1>
+            <button className="hero-quote-btn est-btn" onClick={() => navigate('/quote')}>Get Your Free Quote</button>
           </div>
         </div>
       </header>
 
       <section className="deep-intro container-row">
         <div className="deep-intro-copy">
-          <h2>GOING ABOVE AND BEYOND STANDARD CLEANING</h2>
-          <p>To ensure that your home is free of any grease, dirt or stains that a standard cleaning might not address, you will most likely benefit from the deep cleaning services provided by VR Cleaners. We offer these services to residents of Chester, Montgomery and Delaware Counties who are looking to go the extra mile to have every nook and cranny of their home sparkling clean. From washing your baseboards to cleaning your windows, the team at VR Cleaners does it all!</p>
-          <button className="est-btn" onClick={() => setOpen(true)}>Get Instant Price</button>
+          <h2>Deep cleaning that reaches what routine visits miss</h2>
+          <p>Our deep cleaning service focuses on the hidden and neglected areas in your home — removing grease, grime, and buildup so every surface looks and feels refreshed. Ideal for seasonal refreshes, move-ins/outs, or preparation for special events.</p>
         </div>
         <div className="featured-image-card deep-feature scroll-animate scroll-animate-left">
           <img src={img25} alt="team entering home" className="img-deep-feature" />
@@ -72,17 +67,17 @@ const DeepCleaning = () => {
           <img src={img3} alt="cleaning" className="img-deep-left" />
         </div>
         <div className="deep-list">
-          <h2>OUR DEEP CLEANING SERVICES</h2>
-          <p>Deep cleaning goes further than our residential cleaning services to reach the areas that you might not think to clean — thus being the areas that are the dirtiest!</p>
+          <h2>What we deep clean</h2>
+          <p>Our teams perform intensive cleaning tasks that complement regular cleaning: detailed kitchen and bathroom work, appliance interiors, baseboards, grout, vents, and more to restore your home to a truly clean state.</p>
           <ul className="check-list two-col">
-            <li>Washing baseboards, doors and other woodwork</li>
-            <li>Cleaning small light fixtures</li>
-            <li>Polishing granite countertops</li>
-            <li>Interior refrigerator cleaning</li>
-            <li>Oven cleaning</li>
-            <li>Carpet cleaning</li>
-            <li>Cleaning kitchen cabinets - interior and exterior</li>
-            <li>Window cleaning</li>
+            <li>Baseboards, door frames, and trim</li>
+            <li>Light fixtures and vents</li>
+            <li>Appliance interiors (oven, fridge)</li>
+            <li>Cabinet interiors and exteriors</li>
+            <li>Tile & grout deep scrubbing</li>
+            <li>Carpet spot treatments and surface cleaning</li>
+            <li>Window and glass cleaning</li>
+            <li>Post-construction debris removal</li>
           </ul>
         </div>
       </section>
@@ -113,7 +108,6 @@ const DeepCleaning = () => {
       </section>
 
       <Contact />
-      <QuoteModal open={open} onClose={() => setOpen(false)} />
     </div>
   );
 };

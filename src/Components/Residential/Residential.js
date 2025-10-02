@@ -4,11 +4,11 @@ import Contact from '../Contact/Contact';
 import imgHero from '../../assets/cleaning27.jpeg';
 import img2 from '../../assets/cleaning33.jpeg';
 import imgGrid from '../../assets/cleaning16.jpeg';
-import QuoteModal from '../Quote/QuoteModal';
+import { useNavigate } from 'react-router-dom';
 
 export const Residential = () => {
-  const [open, setOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   const areas = [
     'Downingtown, PA',
@@ -58,17 +58,17 @@ export const Residential = () => {
         <div className="res-hero-image full-bleed">
           <img src={imgHero} alt="Residential cleaning" />
           <div className="res-hero-overlay">
-            <h1>RESIDENTIAL CLEANING SERVICES</h1>
+            <h1>Residential Cleaning Services</h1>
+            <button className="hero-quote-btn est-btn" onClick={() => navigate('/quote')}>Get Your Free Quote</button>
           </div>
         </div>
       </header>
 
       <section className="res-intro container-row">
         <div className="res-copy">
-          <h2>PROFESSIONAL HOME CLEANING TO MAKE LIFE EASIER</h2>
-          <p>Your home is your sanctuary. When daily responsibilities demand your attention elsewhere, keeping your living space spotless becomes an overwhelming burden. VR Cleaners understands the challenges families face in maintaining a truly clean home environment.</p>
-          <p>Our residential cleaning teams combine years of experience with attention to detail that sets us apart. From weekly maintenance to deep seasonal cleaning, we adapt our services to fit your unique needs and schedule. With professional-grade equipment and eco-friendly products, we deliver consistently exceptional results that give you peace of mind and more time to focus on what matters most.</p>
-          <button className="est-btn" onClick={() => setOpen(true)}>Get Instant Price</button>
+          <h2>Professional home cleaning — reliable, trusted, and eco-friendly</h2>
+          <p>Let VR Cleaners take cleaning off your to-do list. We provide dependable residential cleaning services tailored to your schedule — weekly, bi-weekly, monthly, or one-time deep cleans — so you can spend more time on what matters.</p>
+          <p>Our teams arrive with professional-grade equipment and eco-friendly products, delivering consistent results and a healthier home. Choose a plan that fits your lifestyle and budget, and we'll handle the rest.</p>
         </div>
         <div className="featured-image-card res-feature scroll-animate scroll-animate-left">
           <img src={img2} alt="residential team" />
@@ -81,8 +81,8 @@ export const Residential = () => {
         </div>
         <div className="res-details">
           <h2>WHAT DO YOU NEED HELP CLEANING?</h2>
-          <p>When you step through your entryway and look around, are you bombarded with dust and clutter? Even the tidiest people can struggle with home maintenance that gets in the way of enjoying life and focusing on more important matters. Don't let vacuuming and sweeping become an obstacle to your comfort at home.</p>
-          <p>Whether it's weekly upkeep, monthly deep cleaning, or preparing for special occasions, VR Cleaners provides flexible scheduling and personalized service plans. Our trained professionals handle everything from kitchen sanitization to bathroom deep cleaning, ensuring every corner of your home sparkles. Call VR Cleaners for residential cleaning services in:</p>
+          <p>Is your entryway met with dust, clutter, or lingering messes? Busy lives make it hard to stay on top of cleaning — and even the most organized households need a hand. Let VR Cleaners take care of the routine chores so you can relax and enjoy your home.</p>
+          <p>We offer flexible scheduling for routine upkeep, one-time deep cleans, and event preparation. Our vetted teams use professional, eco-friendly products to clean kitchens, bathrooms, floors, and more — delivering a healthier, fresher living space. We proudly serve:</p>
           <div className="res-areas-list">
             <h3>Areas We Serve</h3>
             <ul className="check-list two-col">
@@ -118,7 +118,6 @@ export const Residential = () => {
       </section>
 
       <Contact />
-      <QuoteModal open={open} onClose={() => setOpen(false)} />
     </div>
   );
 };

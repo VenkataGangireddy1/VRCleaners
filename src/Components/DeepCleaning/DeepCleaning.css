@@ -1,6 +1,6 @@
 /* Deep Cleaning page styles - matching Commercial component */
 .deep-page {
-  padding-top: 0;
+  padding-top: 140px; /* Account for top contact bar + navbar */
   margin-top: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   color: #222;
@@ -8,54 +8,69 @@
   position: relative;
 }
 
-.deep-hero-bg {
-  margin-bottom: 0; /* Remove gap after hero */
-  padding-bottom: 0;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.deep-intro {
-  margin-top: 0; /* Remove gap before first section */
-  padding-top: 60px; /* Add internal padding instead */
-}
-
-/* Full-bleed hero - matching Residential component */
+/* Full-bleed hero - matching Commercial component exactly */
 .deep-hero.full-bleed { 
   margin-bottom: 0; 
   padding-bottom: 0; 
-  margin-top: 0;
+  margin-top: -140px; /* Pull hero up to eliminate gap */
   padding-top: 0;
 }
+
 .deep-hero-bg { 
-	position: relative; 
-	width: 100vw; 
-	height: 100vh;
-	min-height: 300px;
-	left: 50%; 
-	right: 50%; 
-	object-fit: fill;
-	margin-left: -50vw; 
-	margin-right: -50vw; 
-	overflow: hidden; 
-	margin-bottom: 0; 
-	padding-bottom: 0; 
+  position: relative; 
+  width: 100vw; 
+  height: 100vh;
+  min-height: 300px;
+  left: 50%; 
+  right: 50%; 
+  object-fit: fill;
+  margin-left: -50vw; 
+  margin-right: -50vw; 
+  overflow: hidden; 
+  margin-bottom: 0; 
+  padding-bottom: 0; 
 }
+
 .deep-hero-bg img { 
-	width: 100%; 
-	height: 100%; 
-	object-fit: cover; 
-	object-position: center center;
-	display: block; 
-	filter: brightness(0.55); 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: center center;
+  display: block; 
+  filter: brightness(0.55); 
 }
 
+.deep-hero-overlay { 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: #fff; 
+  text-align: center; 
+  padding: 0 16px; 
+}
 
-.deep-hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center; padding: 0 16px; }
-.deep-hero-overlay h1 { font-size: 42px; letter-spacing: 1px; margin: 0; text-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+.deep-hero-overlay h1 { 
+  font-size: 42px; 
+  letter-spacing: 1px; 
+  margin: 0; 
+  text-shadow: 0 8px 24px rgba(0,0,0,0.5); 
+}
+
+/* First section spacing after hero */
+.deep-intro.container-row {
+  margin-top: 60px;
+}
 
 /* layout helpers - matching Commercial component */
 .container-row { display: grid; grid-template-columns: 1fr 480px; gap: 36px; align-items: center; margin: 0 24px 60px; }
+
+/* scroll animation helpers (shared pattern) */
+.scroll-animate { opacity: 0; transform: translateY(12px); transition: opacity 560ms cubic-bezier(.2,.9,.2,1), transform 560ms cubic-bezier(.2,.9,.2,1); }
+.scroll-animate.animate-in { opacity: 1; transform: none; }
+.scroll-animate-left { transform: translateX(-60px); }
+.scroll-animate-right { transform: translateX(60px); }
+.scroll-animate-left.animate-in, .scroll-animate-right.animate-in { transform: none; }
 
 /* Second section with image-first layout */
 .deep-details.container-row { 
@@ -99,58 +114,24 @@
 .featured-image-card img { 
   display: block; 
   width: 100%; 
+  height: auto;
   object-fit: cover; 
   object-position: center; 
   margin: 0; 
   padding: 0;
-  border-radius: 8px;
-}
-
-/* Ensure consistent image sizing for all deep cleaning images */
-.deep-intro .featured-image-card,
-.deep-details .featured-image-card {
-  width: 100%;
-  max-width: 480px;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-/* Content image slow loading animations */
-.deep-intro .featured-image-card img,
-.deep-details .featured-image-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 800ms ease-out, transform 800ms ease-out;
-}
-
-.deep-intro .featured-image-card.animate-in img,
-.deep-details .featured-image-card.animate-in img {
-  opacity: 1;
-  transform: scale(1);
 }
 
 /* Content sections spacing */
+.deep-intro {
+  margin-top: 0; /* Remove gap before first section */
+  padding-top: 60px; /* Add internal padding instead */
+}
+
 .deep-content {
   padding: 60px 20px;
 }
 
-/* Image fixes */
-
-/* Helper classes for scroll-triggered animations. Use these on elements you want to animate when they enter the viewport. */
-.scroll-animate { 
-  opacity: 0; 
-  transform: translateY(20px); 
-  transition: opacity 600ms cubic-bezier(.2,.9,.2,1), transform 600ms cubic-bezier(.2,.9,.2,1); 
-}
-.scroll-animate.animate-in { 
-  opacity: 1; 
-  transform: none; 
-}
+/* Additional animation styles - these work with the main scroll animations above */
 .scroll-animate-left { 
   transform: translateX(-40px); 
 }
@@ -169,9 +150,6 @@
 .scroll-animate-bottom.animate-in { 
   transform: none; 
 }
-.scroll-animate-right.animate-in,
-.scroll-animate-top.animate-in,
-.scroll-animate-bottom.animate-in { transform: none; }
 
 /* Keyframe animations */
 @keyframes slideInFromRight {
@@ -189,6 +167,52 @@
 }
 
 .est-btn { background: #F2CA27; border: 3px solid #214E73; padding: 18px 34px; border-radius: 14px; font-size: 18px; cursor: pointer; margin-top: 20px; margin-bottom: 40px; }
+
+/* Hero CTA button (overlay) - keeps est-btn look but adapts color/spacing */
+
+.hero-quote-btn {
+  background-color: #F2CA27;
+  color: #214E73;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.hero-quote-btn:hover {
+  background-color: #e5b525;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* center overlay content like main Hero */
+.deep-hero-overlay { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* Pulse animation for hero CTA */
+@keyframes pulse-cta {
+  0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+  50% { transform: scale(1.04); box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
+  100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+}
+
+.hero-quote-btn {
+  animation: pulse-cta 2.5s ease-in-out infinite;
+}
+
+.hero-quote-btn:hover, .hero-quote-btn:focus {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-quote-btn { animation: none !important; }
+}
 
 .deep-list { 
   margin: 0 24px 60px; 

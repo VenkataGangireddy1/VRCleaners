@@ -1,23 +1,21 @@
 import React from 'react'
-import Arrow from '../../assets/Arrow.jpeg'
 import './Hero.css'
-import { useState } from 'react'
-import QuoteModal from '../Quote/QuoteModal'
+import { useNavigate } from 'react-router-dom'
 
 export const Hero = () => {
-  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+  
   return (
     <div className='hero'>
       <div className='container'>
         <div className='hero-text'>
-          <h1>VR Cleaners</h1>
+          <h1>VR Home and Commercial Cleaning Services</h1>
           <p>Your Trusted Partner in Cleaning Services</p>
-          <button className='btn' onClick={() => setOpen(true)}>
-            Get a Quote <img src={Arrow} alt="arrow" />
+          <button className='btn' onClick={() => navigate('/quote')}>
+            Get a Quote
           </button>
         </div>
       </div>
-      <QuoteModal open={open} onClose={() => setOpen(false)} />
     </div>
   )
 }

@@ -4,18 +4,18 @@ import Contact from '../Contact/Contact';
 import img1 from '../../assets/cleaning4.jpeg';
 import img2 from '../../assets/cleaning32.jpeg';
 import img3 from '../../assets/cleaning30.jpeg';
-import QuoteModal from '../Quote/QuoteModal';
+import { useNavigate } from 'react-router-dom';
 
 export default function Commercial() {
-  const [open, setOpen] = useState(false);
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   const faqs = [
-    { q: 'What types of office cleaning services are available?', a: 'Office cleaning services encompass general cleaning, deep cleaning, and specialty options such as window and carpet cleaning. These services can be tailored to meet your specific needs and ensure a clean and professional workspace.' },
-    { q: 'How often should an office be professionally cleaned?', a: 'Frequency depends on size, occupancy and use. Many offices choose nightly, weekly or several times per week services; we help recommend a cadence based on traffic and risk areas.' },
-    { q: 'Are eco-friendly cleaning products effective?', a: 'Yes; our eco-friendly products provide thorough cleaning while being safer for indoor air quality and occupants.' },
-    { q: 'How can a cleaning schedule benefit my office?', a: 'A consistent schedule maintains cleanliness, reduces cross-contamination, and contributes to employee morale and productivity.' },
-    { q: 'What should I consider when choosing an office cleaning company?', a: 'Prioritize experience, reputation, flexibility, pricing and transparency in scope when selecting VR Cleaners as your commercial cleaning partner.' }
+    { q: 'What commercial cleaning services do you provide?', a: 'We provide tailored janitorial programs including daily or nightly cleaning, routine maintenance, deep cleans, carpet and hard-floor care, window washing, and post-construction cleaning for offices and commercial facilities.' },
+    { q: 'How do you schedule work to avoid disrupting business?', a: 'We coordinate with your team to schedule before-hours, after-hours, or low-traffic windows and provide clear scopes so cleaning is efficient and unobtrusive.' },
+    { q: 'Do you offer green or hospital-grade disinfecting?', a: 'Yes — we use professional-grade products and can provide eco-friendly or EPA-registered disinfectants depending on your facility requirements.' },
+    { q: 'Can you handle multiple locations or large facilities?', a: 'Absolutely. VR Cleaners supports multi-site contracts, scalable staffing, and consistent quality control across large footprints.' },
+    { q: 'How do I get a custom quote?', a: 'Request a free quote and site assessment — we’ll deliver a tailored scope, schedule, and cost estimate based on your needs.' }
   ];
 
   const toggleIndex = (i) => setOpenIndex(openIndex === i ? null : i);
@@ -46,16 +46,16 @@ export default function Commercial() {
         <div className="com-hero-bg">
           <img src={img1} alt="Commercial cleaning" />
           <div className="com-hero-overlay">
-            <h1>COMMERCIAL CLEANING SERVICES</h1>
+            <h1>Commercial Cleaning Services</h1>
+            <button className="hero-quote-btn est-btn" onClick={() => navigate('/quote')}>Get Your Free Quote</button>
           </div>
         </div>
       </header>
 
       <section className="com-intro container-row">
         <div className="com-copy">
-          <h2>WHY PROFESSIONAL COMMERCIAL CLEANING MATTERS</h2>
-          <p>At VR Cleaners, we set the standard for commercial cleaning with proven systems that go beyond surface-level tidiness. Our professional services focus on eliminating dirt, germs, and bacteria—creating a healthier, safer, and more productive environment for your team, clients, and guests.</p>
-          <button className="est-btn" onClick={() => setOpen(true)}>Get Instant Price</button>
+          <h2>Cleaner workplaces. Healthier teams. Better first impressions.</h2>
+          <p>Keep your facility professional and safe with VR Cleaners. We deliver reliable janitorial services and customizable programs, so your business can focus on operations while we maintain a clean, welcoming environment for employees and customers.</p>
         </div>
         <div className="featured-image-card com-feature scroll-animate scroll-animate-left">
           <img src={img2} alt="commercial team" />
@@ -67,14 +67,14 @@ export default function Commercial() {
           <img src={img3} alt="equipment" />
         </div>
         <div className="com-details">
-          <h2>ROUTINE JANITORIAL SERVICES</h2>
-          <p>Whether you require daily, weekly, or monthly cleaning, VR Cleaners will customize a professional janitorial program tailored to your facility’s needs.</p>
+          <h2>Professional janitorial & facility services</h2>
+          <p>From daily maintenance to targeted deep cleans, our teams work around your schedule to keep lobbies, workspaces, restrooms, and break rooms healthy and presentable. We tailor scopes to industry needs — office, retail, medical, or industrial.</p>
           <ul className="check-list two-col">
-            <li><strong>Office Areas:</strong> Dusting and wiping of all horizontal surfaces · Trash collection and removal · Disinfection of high-touch points</li>
-            <li><strong>Break Rooms & Cafes:</strong> Disinfection of sinks, tables, chairs, counters and entry areas · Floors swept, mopped, and shined</li>
-            <li><strong>Restrooms:</strong> Toilets and stalls cleaned and disinfected · Sinks sanitized · Floors swept and mopped</li>
-            <li><strong>Interior Windows:</strong> Special attention to entryways, lobbies, and reception areas</li>
-            <li><strong>Trash Collection & Eco-Friendly Disposal:</strong> Coordination with your recycling and sustainability practices</li>
+            <li><strong>Office Areas:</strong> Dusting, surface disinfection, and trash removal</li>
+            <li><strong>Break Rooms & Cafes:</strong> Sanitizing high-touch areas and floor care</li>
+            <li><strong>Restrooms:</strong> Comprehensive cleaning and disinfection</li>
+            <li><strong>Interior Windows & Glass:</strong> Lobby and storefront attention</li>
+            <li><strong>Waste & Recycling:</strong> Responsible collection and eco-friendly disposal</li>
           </ul>
         </div>
       </section>
@@ -105,7 +105,6 @@ export default function Commercial() {
       </section>
 
       <Contact />
-      <QuoteModal open={open} onClose={() => setOpen(false)} />
     </div>
   );
 }

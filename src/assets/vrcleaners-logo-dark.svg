@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <title>VR Home &amp; Commercial Cleaning Services - Logo (dark background)</title>
+  <desc>Logo for VR Home &amp; Commercial Cleaning Services, optimized for dark backgrounds.</desc>
+
+  <!-- Mark: circle with sparkle -->
+  <g id="mark" transform="translate(40,40)">
+    <circle cx="60" cy="60" r="60" fill="#00E6D4" />
+    <!-- sparkle -->
+    <g transform="translate(100,10) scale(0.9)" fill="#052525" opacity="0.98">
+      <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z" />
+    </g>
+
+    <!-- VR monogram -->
+    <text x="30" y="86" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#052525">VR</text>
+  </g>
+
+  <!-- Wordmark -->
+  <g id="wordmark" transform="translate(180,95)">
+    <text x="0" y="-6" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">VR Home &amp; Commercial</text>
+    <text x="0" y="22" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">Cleaning Services</text>
+    <text x="0" y="46" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#BFEFE8">Reliable • Eco-friendly • Insured</text>
+  </g>
+</svg>

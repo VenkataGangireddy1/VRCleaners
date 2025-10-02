@@ -1,6 +1,5 @@
-/* Residential page styles */
 .residential-page { 
-  padding-top: 0; 
+  padding-top: 140px; /* Account for top contact bar + navbar */
   margin-top: 0; 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
   color: #222;
@@ -100,8 +99,6 @@
 .residential-page .faq-answer p {
   text-align: justify;
   text-justify: inter-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
   hyphens: auto;
 }
 
@@ -110,8 +107,6 @@
 .residential-page .check-list li {
   text-align: left !important;
   text-justify: auto;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
   hyphens: none;
 }
 
@@ -130,7 +125,7 @@
 .res-areas-list ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 8px; }
 .res-areas-list li { position: relative; padding-left: 28px; color: #222; }
 .res-areas-list li::before { 
-  content: '\2713'; 
+  content: '\\2713'; 
   position: absolute; 
   left: 0; 
   top: 0; 
@@ -194,6 +189,59 @@
   margin-top: 20px; 
   margin-bottom: 40px; 
 }
+
+/* Hero CTA button (overlay) - keeps est-btn look but adapts color/spacing */
+.hero-quote-btn {
+  /* match hero button style from Hero.css */
+  background-color: #F2CA27;
+  color: #214E73;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.hero-quote-btn:hover {
+  background-color: #e5b525;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}
+
+/* ensure the hero container centers content like the main Hero component */
+.res-hero > .res-hero-image, .res-hero > .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Pulse animation for hero CTA */
+@keyframes pulse-cta {
+  0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+  50% { transform: scale(1.04); box-shadow: 0 8px 18px rgba(0,0,0,0.22); }
+  100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+}
+
+.hero-quote-btn {
+  animation: pulse-cta 2.5s ease-in-out infinite;
+}
+
+/* Pause animation on hover & focus for better UX */
+.hero-quote-btn:hover, .hero-quote-btn:focus {
+  animation-play-state: paused;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-quote-btn { animation: none !important; }
+}
 .check-list { 
   list-style: none; 
   padding: 0; 
@@ -204,7 +252,7 @@
 }
 .check-list li { position: relative; padding-left: 28px; color: #222; line-height: 1.5; }
 .check-list li::before { 
-  content: '\2713'; 
+  content: '\\2713'; 
   position: absolute; 
   left: 0; 
   top: 0; 
@@ -404,4 +452,41 @@
         width: 100%;
         max-width: 200px;
     }
+}
+
+/* Force no gap between hero and first section - Mobile specific fixes */
+@media (max-width: 768px) {
+  .residential-page {
+    padding-top: 0;
+  }
+  
+  .res-hero, header.res-hero {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .res-hero-image.full-bleed {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .res-intro {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+  }
+  
+  .res-intro > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  .container-row {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .res-intro {
+    padding-top: 15px !important;
+  }
 }
